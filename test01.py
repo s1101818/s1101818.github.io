@@ -1,98 +1,4 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Elements Reference - Massively by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">回到首頁</a>
-					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">履歷</a></li>
-							<li><a href="generic.html">自我介紹</a></li>
-							<li class="active"><a href="elements.html">爬蟲展示</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>爬蟲展示</h1>
-								</header>
-								<!-- Text stuff -->
-									<h2>爬蟲說明</h2>
-									<p>這個是一個台鐵時刻查詢爬蟲程式，讓使用者輸入站名、日期、時間來幫助查詢對應班次，並輸出前五項班次的資訊後，將其他資料存入Excel表格當中，可供更詳細得排序。<a href="https://github.com/s1101818/20250425githubtest">GITHUB LINK</a></p>
-									<hr />
-								<!-- Image -->
-								<h2>使用步驟</h2>
-
-									<h3>前置作業</h3>
-									
-									<p>用anaconda建立需要的環境 來安裝需要的函式庫(已經建立環境的可以跳過)</p>
-									<p>建立虛擬環境 環境名稱可以自己取(這裡以spydertestenv為例) python可以直接用最高版本不用指定</p>
-									<pre><code>conda create -n "環境名稱" </code></pre>
-									<span class="image fit"><img src="images/pic01.png" alt="" /></span>
-									
-									<p>用指令安裝套件</p>
-									<pre><code>pip install selenium webdriver-manager</code></pre>
-									<span class="image fit"><img src="images/pic02.png" alt="" /></span>
-									
-									<h3>操作程式</h3>
-									
-									<p>進入爬蟲程式的子目錄 執行爬蟲程式(這裡以test01.py為例)</p>
-									<pre><code>cd "目錄名稱"
-python "爬蟲名稱".py</code></pre>
-									<span class="image fit"><img src="images/pic03.png" alt="" /></span>
-									<p>輸入出發車站 目的車站 出發日期 出發時間</p>
-									<pre><code>請輸入出發站（例如：台南）：台南
-請輸入到達站（例如：台北）：台北
-請輸入乘車日期（格式：YYYYMMDD，例如：20250530）：20250530
-請輸入出發時間（格式：HH:MM，例如：07:30）：10:00</code></pre>
-									
-									<span class="image fit"><img src="images/pic04.png" alt="" /></span>
-									<hr />
-									
-									<h2>執行結果展示</h2>
-									
-									<h3>輸出結果</h3>
-									
-									<p>程式碼抓取完查詢內容後，會將前五項印出，並把抓取下來的資料存入Excel表格中<br/>
-										
-									</p>
-									<pre><code>已將查詢結果儲存為：<出發地 to 目的地 防止重複的編號.csv>
-前五項班次資料</code></pre>
-									<h3>如圖:</h3>
-									<span class="image fit"><img src="images/pic04.png" alt="" /></span>
-									
-								<!-- Preformatted Code -->
-									<h2>程式與註解說明</h2>
-									<pre><code>from selenium import webdriver
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -102,10 +8,11 @@ import time
 import random
 
 from selenium.webdriver.support.ui import Select #給下拉選擇出發時間用
-import csv#給後面的scv輸出用
+import csv#給後面的scV輸出用
 import os
 
 def extract_td_content(td_element):
+    """解析包含 <ul><li> 的複雜表格格內容"""
     try:
         # 先嘗試抓取 ul 列表內容
         ul = td_element.find_element(By.TAG_NAME, 'ul')
@@ -248,33 +155,3 @@ if __name__ == "__main__":
     else:
         print("查無資料")
 
-
-
-</code></pre>
-
-							</section>
-							<footer>
-								<div class="pagination">
-									<li><a href="indix.html">履歷</a></li>
-									<li><a href="generic.html">自我介紹</a></li>
-								</div>
-							</footer>
-					</div>
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
